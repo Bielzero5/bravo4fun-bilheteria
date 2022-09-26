@@ -12,7 +12,7 @@
         $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
 
         //Capturar os valores das variaveis
-        $nome = $_POST['nome'];
+        $nome = $_POST["nome"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
 

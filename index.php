@@ -30,8 +30,6 @@
         //Realiza uma query sql para buscar o adiministrador que tenha o email e a senha salvas no banco
         $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL='" . $email ."' AND ADM_SENHA='" . $senha . "'")->fetchAll();
 
-        $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR");
-
     ?>
     <div class="container">
         <aside>
@@ -73,7 +71,7 @@
             </div>
             <!------------------- END OF INSIGHTS -------------------->
             <div class="recent-orders">
-                <h2>Administradores Adicionados Recentes</h2>
+                <h2>Administradores Adicionados</h2>
                 <table>
                     <thead>
                         <tr>
@@ -82,36 +80,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                        while ($linha = $cmd->fetch()) {
-                    ?>
-                    <tr>
-                        <td>
                         <?php
-                            echo $linha["ADM_EMAIL"];
+                            $cmd = $pdo->prepare("SELECT * FROM ADMINISTRADOR");
+                            $cmd->execute();
+
+                            $result = $cmd->fetchAll();
+                            
+                            foreach ($result as $key => $value) {
+                                echo '<tr>
+                                        <td>'. $value['ADMIN_EMAIL']. '</td>
+                                        <td>'. $value['ADMIN_NAME']. '</td>
+                                        <td class="danger">Exlcuir</td>
+                                        <td class="primary">Editar</td>
+                                    </tr>';
+                            };
                         ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $linha["ADM_NOME"];
-                            ?>  
-                        </td>
-                            <!-- <td>Due</td> -->
-                            <td class="danger">Excluir</td>
-                            <td class="primary">Editar</td>
-                        </tr>
-                    <?php
-                        }
-                    ?>
-                        
                     </tbody>
                 </table>
 
                 <div class="divUsu">
                     <h2>Cadastro de Administrador</h2>
-                    <form action="">
-                        <label for="name">Nome:</label>
-                        <input class="formUsu" type="text" id="name" name="firstname" placeholder="Epaminondas">
+                    <form action="criarProcessamento.php">
+                        <label for="nome">Nome:</label>
+                        <input class="formUsu" type="text" id="nome" name="nome" placeholder="Epaminondas">
 
                         <label for="email">Email</label>
                         <input class="formUsu" type="email" id="email" name="email" placeholder="joazinho@gmail.com">

@@ -1,0 +1,18 @@
+<tr>
+                        <td>
+                        <?php
+                            echo $linha["ADM_EMAIL"];
+                        ?>
+                        </td>
+                        <td>
+                            <?php
+                                echo $linha["ADM_NOME"];
+                            ?>  
+                        </td>
+                            <!-- <td>Due</td> -->
+                            <td class="danger">Excluir</td>
+                            <td class="primary">Editar</td>
+                        </tr>
+                    <?php
+                        }
+                    ?>
