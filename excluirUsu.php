@@ -1,4 +1,4 @@
-<?php
+<?php 
         $mysqlhostname = '144.22.244.104';
         $mysqlport = '3306';
         $mysqlusername = 'Bravo4Fun';
@@ -10,10 +10,10 @@
         $dsn = 'mysql:host=' . $mysqlhostname .';dbname='. $mysqldatabase . ';port='. $mysqlport;
         $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
 
-        $email = $_POST["email"];
-        $nome = $_POST["nome"];
-        $senha = $_POST["senha"];
-        
+        if (isset($_GET['delete'])) {
+            $id = (int)$_GET['delete'];
+            $pdo->exec("DELETE FROM ADMINISTRADOR WHERE id = $id");
+            echo 'Deletado com sucesso o id:' .$id;
+        }
 
-        $pdo->exec("UPDATE ADMINISTRADOR SET ADM_EMAIL='$email' ADM_NOME='$nome' ADM_SENHA='$senha' WHERE ADM_ID=$id");
-        
+?>
