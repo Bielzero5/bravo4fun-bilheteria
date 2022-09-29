@@ -6,39 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
-      <link rel="stylesheet" href="style2.css">
+      <link rel="stylesheet" href="../css/style2.css">
     <title>Responsive-Dashboard</title>
 </head>
 <body>
 <?php
         //dados para conexão ao mysql
-        $mysqlhostname = '144.22.244.104';
-        $mysqlport = '3306';
-        $mysqlusername = 'Bravo4Fun';
-        $mysqlpassword = 'Bravo4Fun';
-        $mysqldatabase = 'Bravo4Fun';
-
-        //Mostra a String de Conexao ao Mysql
-
-        $dsn = 'mysql:host=' . $mysqlhostname .';dbname='. $mysqldatabase . ';port='. $mysqlport;
-        $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
-
-        // Captura o post do usuario
-        $id = $_POST["id"];
-        $email = $_POST["email"];
-        $senha = $_POST["senha"];
-        $idChangeUser = 0;
-
-        //Realiza uma query sql para buscar o adiministrador que tenha o email e a senha salvas no banco
-        $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL='$email' AND ADM_SENHA='$senha'")->fetchAll();
-        
-        $pdo->exec("UPDATE ADMINISTRADOR SET ADM_ATIVO='$idChangeUser' WHERE ADM_ID='$id'");
+        require 'conexao.php';
+    
     ?>
     <div class="container">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="images/logo-dark-2.png" alt="logo da empresa">
+                    <img src="../images/logo-dark-2.png" alt="logo da empresa">
                     <h2>Bravo<span class="danger">4Fun</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -84,26 +65,52 @@
                     </thead>
                     <tbody>
                         <?php
-                            $cmd = $pdo->prepare("SELECT * FROM ADMINISTRADOR");
+                            $cmd = $pdo->prepare("SELECT * FROM ADMINISTRADOR WHERE ADM_ATIVO = 1");
                             $cmd->execute();
 
                             $result = $cmd->fetchAll();
                             
                             foreach ($result as $key => $value) {
-                                echo '<tr>
-                                        <td>'. $value['ADM_EMAIL']. '</td>
-                                        <td>'. $value['ADM_NOME']. '</td>
-                                        <td class="danger"><a href="?delete">Excluir</a></td>
-                                        <td class="primary"><a href="editarUsu.php">Editar</a></td>
-                                    </tr>';
-                            };
+                                echo '
+                                        <tr>
+                                            <td>'. $value['ADM_EMAIL']. '</td>
+                                            <td>'. $value['ADM_NOME']. '</td>'; 
                         ?>
+                                            <td class="danger"><a href="excluirUsu.php?id=<?php echo $value['ADM_ID']; ?>">Excluir</a></td>
+                                            <td class="primary"><a href="editarUsu.php">Editar</a></td>
+                        <?php
+                                echo    '</tr>';
+                                };
+                        ?>
+                    
                     </tbody>
                 </table>
 
+                <div class="">
+                    
+                    <button onclick="document.getElementById('id01').style.display='block'" class="">Open Modal</button>
+
+                    <div id="id01" class="">
+                        <div class="">
+                        <header class=""> 
+                            <span onclick="document.getElementById('id01').style.display='none'" 
+                            class="">&times;</span>
+                            <h2>Modal Header</h2>
+                        </header>
+                        <div class="">
+                            <p>Some text..</p>
+                            <p>Some text..</p>
+                        </div>
+                        <footer class="">
+                            <p>Modal Footer</p>
+                        </footer>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="divUsu">
                     <h2>Cadastro de Administrador</h2>
-                    <form action="criarProcessamento.php">
+                    <form action="criarProcessamento.php" method="POST">
                         <label for="nome">Nome:</label>
                         <input class="formUsu" type="text" id="nome" name="nome" placeholder="Epaminondas">
 
@@ -113,7 +120,7 @@
                         <label for="senha">Senha</label>
                         <input class="formUsu" type="password" id="senha" name="senha" placeholder="Senha123.">
                 
-                        <input class="formUsu1" type="button" value="Enviar">
+                        <input type="submit" class="formUsu1" value="Enviar">
                     </form>
                     </div>
                 <a href="#">Show All</a>
@@ -135,7 +142,7 @@
                         <small class="text-mutet">Adim</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg" alt="Foto de perfil">
+                        <img src="../images/profile-1.jpg" alt="Foto de perfil">
                     </div>
                 </div>
             </div>
@@ -145,7 +152,7 @@
                 <div class="updates">
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="./images/profile-2.jpg" alt="Foto de perfil">
+                            <img src="../images/profile-2.jpg" alt="Foto de perfil">
                         </div>
                         <div class="message">
                             <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
@@ -154,7 +161,7 @@
                     </div>
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="./images/profile-3.jpg" alt="Foto de perfil">
+                            <img src="../images/profile-3.jpg" alt="Foto de perfil">
                         </div>
                         <div class="message">
                             <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
@@ -163,7 +170,7 @@
                     </div>
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="./images/profile-4.jpg" alt="Foto de perfil">
+                            <img src="../images/profile-4.jpg" alt="Foto de perfil">
                         </div>
                         <div class="message">
                             <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
