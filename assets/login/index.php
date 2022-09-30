@@ -77,7 +77,8 @@
                                             <td>'. $value['ADM_NOME']. '</td>'; 
                         ?>
                                             <td class="danger"><a href="excluirUsu.php?id=<?php echo $value['ADM_ID']; ?>">Excluir</a></td>
-                                            <td class="primary"><a href="editarUsu.php">Editar</a></td>
+                                            <td class="primary"><input id="open-modal" type="button" value="Editar"></td>
+                                              
                         <?php
                                 echo    '</tr>';
                                 };
@@ -86,25 +87,17 @@
                     </tbody>
                 </table>
 
-                <div class="">
-                    
-                    <button onclick="document.getElementById('id01').style.display='block'" class="">Open Modal</button>
-
-                    <div id="id01" class="">
-                        <div class="">
-                        <header class=""> 
-                            <span onclick="document.getElementById('id01').style.display='none'" 
-                            class="">&times;</span>
-                            <h2>Modal Header</h2>
-                        </header>
-                        <div class="">
-                            <p>Some text..</p>
-                            <p>Some text..</p>
-                        </div>
-                        <footer class="">
-                            <p>Modal Footer</p>
-                        </footer>
-                        </div>
+                <div id="fade" class="hide" ></div>
+                <div id="modal" class="hide">
+                    <div class="modal-header">
+                        <h2>Titulo do modal</h2>
+                        <button id="close-modal">Fechar</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fuga iste voluptatibus vero ipsum repudiandae reprehenderit a sit illum iusto architecto rem, officia magni quidem libero sapiente quis unde enim!</p>
+                        <p>
+                        </p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quidem ducimus impedit illo nobis culpa ea dolore aliquid incidunt, aspernatur eligendi, non neque, est quod ab officia earum maxime sunt?
+                        </p>
                     </div>
                 </div>
 
@@ -191,6 +184,8 @@
             </div>
         </div>
     </div>
+
+    <script src="scripts.js"></script>
     
 </body>
 </html>

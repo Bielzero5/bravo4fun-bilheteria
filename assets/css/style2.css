@@ -570,6 +570,46 @@ input.formUsu, select {
     padding: 20px;
   }
 
+/* ================= MODAL ==================*/
+
+  main .recent-orders div#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+  }
+
+  main .recent-orders div#modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 10;
+    width: 31rem;
+    max-width: 90vw;
+    padding: 1.2rem;
+    border-radius: var(--border-radius-1);
+  }
+
+  main .recent-orders #modal div.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(121, 121, 121);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+
+  #modal.hide,
+  #fade.hide {
+    display: none;
+  }
+
 /* ============ MEDIA QUERYS =================*/
 
 @media screen and (max-width: 1200PX) {
