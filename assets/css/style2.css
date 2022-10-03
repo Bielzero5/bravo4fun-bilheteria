@@ -563,7 +563,7 @@ input.formUsu, select {
     background-color: #00cfa2;
   }
   
-  div.divUsu {
+  div#modalAdm {
     margin-top: 4rem;
     border-radius: 1rem;
     background-color: #ffffff;
@@ -606,7 +606,8 @@ input.formUsu, select {
 
 
   #modal.hide,
-  #fade.hide {
+  #fade.hide,
+  #modalAdm.hide {
     display: none;
   }
 

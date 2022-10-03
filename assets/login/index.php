@@ -77,8 +77,7 @@
                                             <td>'. $value['ADM_NOME']. '</td>'; 
                         ?>
                                             <td class="danger"><a href="excluirUsu.php?id=<?php echo $value['ADM_ID']; ?>">Excluir</a></td>
-                                            <td class="primary"><input id="open-modal" type="button" value="Editar"></td>
-                                              
+                                            <td class="primary"><input id="open-modal" type="button" value="Editar"></td>                  
                         <?php
                                 echo    '</tr>';
                                 };
@@ -90,34 +89,40 @@
                 <div id="fade" class="hide" ></div>
                 <div id="modal" class="hide">
                     <div class="modal-header">
-                        <h2>Titulo do modal</h2>
+                        <h2>Editar Usuário</h2>
                         <button id="close-modal">Fechar</button>
                     </div>
                     <div class="modal-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fuga iste voluptatibus vero ipsum repudiandae reprehenderit a sit illum iusto architecto rem, officia magni quidem libero sapiente quis unde enim!</p>
-                        <p>
-                        </p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quidem ducimus impedit illo nobis culpa ea dolore aliquid incidunt, aspernatur eligendi, non neque, est quod ab officia earum maxime sunt?
-                        </p>
+                        <form action="editarUsu.php" method="POST">
+                            <label for="nome">Nome:</label>
+                            <input class="formUsu" type="text" id="nome" name="nome" placeholder="Epaminondas">
+
+                            <label for="email">Email</label>
+                            <input class="formUsu" type="email" id="email" name="email" placeholder="joazinho@gmail.com">
+
+                            <label for="senha">Senha</label>
+                            <input class="formUsu" type="password" id="senha" name="senha" placeholder="Senha123.">
+                    
+                            <input type="submit" class="formUsu1" value="Enviar">
+                        </form>
                     </div>
                 </div>
 
-                <div class="divUsu">
+                <div  id="modalAdm" class="divUsu hide">
                     <h2>Cadastro de Administrador</h2>
                     <form action="criarProcessamento.php" method="POST">
                         <label for="nome">Nome:</label>
-                        <input class="formUsu" type="text" id="nome" name="nome" placeholder="Epaminondas">
+                        <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
 
                         <label for="email">Email</label>
-                        <input class="formUsu" type="email" id="email" name="email" placeholder="joazinho@gmail.com">
+                        <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com">
 
                         <label for="senha">Senha</label>
-                        <input class="formUsu" type="password" id="senha" name="senha" placeholder="Senha123.">
+                        <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123.">
                 
                         <input type="submit" class="formUsu1" value="Enviar">
                     </form>
-                    </div>
-                <a href="#">Show All</a>
-            </div>
+                </div>
         </main>
         <!------------------- END OF MAIN -------------------->
         <div class="right">
@@ -174,11 +179,12 @@
             </div>
             <!------------------- END OF UPDATES -------------------->
             <div class="sales-analytics">
-                <h2>Sales Analytics</h2>
+                <h2>Cadastrar Adiministrador</h2>
                 <div class="item add-product">
-                    <div>
+                    <div> 
+                        <input type="button" value="Adicionar">
                         <span class="material-icons-sharp">add</span>
-                        <h3>Adicionar Usuários</h3>
+                       
                     </div>
                 </div>
             </div>
