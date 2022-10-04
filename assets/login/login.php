@@ -16,7 +16,7 @@ include('conexao.php');
 <body>
     <div class="main-login">
         <div class="left-login">
-            <img src="../css/images/logo-dark-2.png" alt="Logo Bravo4Fun">
+            <img src="../images/logo-dark-2.png" alt="Logo Bravo4Fun">
             <h1>Faça seu login<br>E controle sua plataforma de forma simples</h1>
         </div>
         <div class="right-login">

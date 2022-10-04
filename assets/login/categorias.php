@@ -28,11 +28,11 @@
             </div>
 
             <div class="sidebar">
-                <a href="#" class="active">
+                <a href="index.php" class="active">
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="categorias.php">
+                <a href="#">
                     <span class="material-icons-sharp">add</span>
                     <h3>Adicionar Categorias</h3>
                 </a>
@@ -52,13 +52,13 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Emails</th>
-                            <th>Nome</th>
+                            <th>Categorias</th>
+                            <th>Descrição</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $cmd = $pdo->prepare("SELECT * FROM ADMINISTRADOR WHERE ADM_ATIVO = 1");
+                            $cmd = $pdo->prepare("SELECT * FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
                             $cmd->execute();
 
                             $result = $cmd->fetchAll();
@@ -67,12 +67,11 @@
                                 echo '
                                         <tr>
                                         
-                                            <td>'. $value['ADM_ID']. '</td>
-                                            <td>'. $value['ADM_EMAIL']. '</td>
-                                            <td>'. $value['ADM_NOME']. '</td>'; 
+                                            <td>'. $value['CATEGORIA_NOME']. '</td>
+                                            <td>'. $value['CATEGORIA_DESC']. '</td>'; 
                         ?>
                                             <td >
-                                                <a href="excluirUsu.php?id=<?php echo $value['ADM_ID']; ?>">Excluir</a>
+                                                <a href="excluirCat.php?id=<?php echo $value['CATEGORIA_ID']; ?>">Excluir</a>
                                             </td>
                                             <td class="primary">
                                                 <input id="open-modal" type="button" value="Editar">
@@ -92,16 +91,14 @@
                         <button id="close-modal">Fechar</button>
                     </div>
                     <div class="modal-body">
-                        <form action="editarUsu.php?id=<?php echo $value['ADM_ID']; ?>" method="POST">
-                            <label for="nome">Nome:</label>
-                            <input class="formUsu" type="text" id="nome" name="nome" placeholder="Epaminondas">
+                        <form action="editarUsu.php?id=<?php echo $value['CATEGORIA_ID']; ?>" method="POST">
+                            <label for="nome">Nome da Categoria:</label>
+                            <input class="formUsu" type="text" id="nome" name="nome" placeholder="Rock">
 
-                            <label for="email">Email</label>
-                            <input class="formUsu" type="email" id="email" name="email" placeholder="joazinho@gmail.com">
+                            <label for="desc">Descrição</label>
+                            <textarea name="desc" id="desc-cat" cols="30" rows="5" wrap="hard">
+                            </textarea>
 
-                            <label for="senha">Senha</label>
-                            <input class="formUsu" type="password" id="senha" name="senha" placeholder="Senha123.">
-                    
                             <input type="submit" class="formUsu1" value="Enviar">
                         </form>
                     </div>
@@ -114,16 +111,14 @@
                         <button id="closeModalBtnAdm">Fechar</button>
                     </div>
                    
-                    <form action="criarProcessamento.php" method="POST">
-                        <label for="nome">Nome:</label>
-                        <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
-
-                        <label for="email">Email</label>
-                        <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com">
-
-                        <label for="senha">Senha</label>
-                        <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123.">
-                
+                    <form action="criarCategoria.php" method="POST">
+                        <label for="nome">Nome da Categoria:</label>
+                        <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Rock">
+                        
+                        <label for="desc">Descrição</label>
+                        <textarea name="desc" id="desc-cat" cols="30" rows="5" wrap="hard">
+                        </textarea>
+                        
                         <input type="submit" class="formUsu1" value="Enviar">
                     </form>
                 </div>
