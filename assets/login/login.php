@@ -22,7 +22,7 @@ include('conexao.php');
         <div class="right-login">
             <div class="card-login">
                 <h1>LOGIN</h1>
-                <form Action="logar.php" method="POST">
+                <form Action="index.php" method="POST">
                     <div class="textfield">
                         <label for="email"> Email </label>
                         <input type="email" name="email" id="email" placeholder="Email" required>

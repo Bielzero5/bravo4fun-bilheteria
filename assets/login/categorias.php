@@ -48,27 +48,29 @@
 
             <!------------------- END OF INSIGHTS -------------------->
             <div class="recent-orders">
-                <h2>Administradores Adicionados</h2>
+                <h2>Categorias Adicionados</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Categorias</th>
                             <th>Descrição</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $cmd = $pdo->prepare("SELECT * FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
+                            $cmd = $pdo->prepare("SELECT * FROM CATEGORIA");
                             $cmd->execute();
 
                             $result = $cmd->fetchAll();
-                            
+                             
                             foreach ($result as $key => $value) {
                                 echo '
                                         <tr>
                                         
                                             <td>'. $value['CATEGORIA_NOME']. '</td>
-                                            <td>'. $value['CATEGORIA_DESC']. '</td>'; 
+                                            <td>'. $value['CATEGORIA_DESC']. '</td>
+                                            <td>'. ($value['CATEGORIA_ATIVO'] == 1 ? 'Ativo' : 'Inativo') .'</td>'; 
                         ?>
                                             <td >
                                                 <a href="excluirCat.php?id=<?php echo $value['CATEGORIA_ID']; ?>">Excluir</a>
@@ -87,7 +89,7 @@
                 <div id="fade" class="hide" ></div>
                 <div id="modal" class="hide">
                     <div class="modal-header">
-                        <h2>Editar Usuário</h2>
+                        <h2>Editar Categoria</h2>
                         <button id="close-modal">Fechar</button>
                     </div>
                     <div class="modal-body">
@@ -107,7 +109,7 @@
                 <div id="fadeAdm" class="hide"></div>
                 <div  id="modalAdm" class="divUsu hide">
                     <div class="modalHeaderAdm">
-                        <h2>Cadastro de Administrador</h2>
+                        <h2>Cadastro de Categorias</h2>
                         <button id="closeModalBtnAdm">Fechar</button>
                     </div>
                    
@@ -144,41 +146,9 @@
                 </div>
             </div>
             <!------------------- END OF TOP -------------------->
-            <div class="recent-updates">
-                <h2>Recent Updates</h2>
-                <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../images/profile-2.jpg" alt="Foto de perfil">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../images/profile-3.jpg" alt="Foto de perfil">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../images/profile-4.jpg" alt="Foto de perfil">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!------------------- END OF UPDATES -------------------->
+            
             <div class="sales-analytics">
-                <h2>Cadastrar Adiministrador</h2>
+                <h2>Cadastrar Categorias</h2>
                 <div class="item add-product">
                     <div> 
                         <input id="openModalAdm"  type="button" value="Adicionar">

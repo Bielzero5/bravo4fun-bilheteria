@@ -13,6 +13,24 @@
 <?php
         //dados para conexão ao mysql
         require 'conexao.php';
+
+    if (isset($_POST['email']) && !empty($_POST['email']) 
+    && isset($_POST['senha']) && !empty($_POST['senha']))   {
+        
+        require 'UsuarioClass.php';
+        require 'conexao.php';
+        $usuario = new Usuario();
+
+        $email = addslashes($_POST['email']);
+        $senha = addslashes($_POST['senha']);
+
+        if ($usuario->login($email, $senha) == true) {
+                header("Location: index.php");
+            } else {
+                header("Location: login.php");
+            }
+    }
+
     
     ?>
     <div class="container">
@@ -54,11 +72,12 @@
                         <tr>
                             <th>Emails</th>
                             <th>Nome</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $cmd = $pdo->prepare("SELECT * FROM ADMINISTRADOR WHERE ADM_ATIVO = 1");
+                            $cmd = $pdo->prepare("SELECT * FROM ADMINISTRADOR");
                             $cmd->execute();
 
                             $result = $cmd->fetchAll();
@@ -66,16 +85,15 @@
                             foreach ($result as $key => $value) {
                                 echo '
                                         <tr>
-                                        
-                                            <td>'. $value['ADM_ID']. '</td>
                                             <td>'. $value['ADM_EMAIL']. '</td>
-                                            <td>'. $value['ADM_NOME']. '</td>'; 
+                                            <td>'. $value['ADM_NOME']. '</td> 
+                                            <td>'. ($value['ADM_ATIVO'] == 1 ? 'Ativo' : 'Inativo') .'</td>';
                         ?>
                                             <td >
                                                 <a href="excluirUsu.php?id=<?php echo $value['ADM_ID']; ?>">Excluir</a>
                                             </td>
-                                            <td class="primary">
-                                                <input id="open-modal" type="button" value="Editar">
+                                            <td >
+                                                <a href="editarUsuForms.php?id=<?php echo $value['ADM_ID']; ?>">Editar</a>
                                             </td>                  
                         <?php
                                 echo    '</tr>';
@@ -92,17 +110,7 @@
                         <button id="close-modal">Fechar</button>
                     </div>
                     <div class="modal-body">
-                        <form action="editarUsu.php?id=<?php echo $value['ADM_ID']; ?>" method="POST">
-                            <label for="nome">Nome:</label>
-                            <input class="formUsu" type="text" id="nome" name="nome" placeholder="Epaminondas">
-
-                            <label for="email">Email</label>
-                            <input class="formUsu" type="email" id="email" name="email" placeholder="joazinho@gmail.com">
-
-                            <label for="senha">Senha</label>
-                            <input class="formUsu" type="password" id="senha" name="senha" placeholder="Senha123.">
-                    
-                            <input type="submit" class="formUsu1" value="Enviar">
+                        
                         </form>
                     </div>
                 </div>

@@ -8,28 +8,26 @@ const openModalAdm = document.querySelector("#openModalAdm");
 const closeModalBtnAdm = document.querySelector("#closeModalBtnAdm");
 
 const toggleModal = () => {
-    modal.classList.toggle("hide");
-    fade.classList.toggle("hide");
+  modal.classList.toggle("hide");
+  fade.classList.toggle("hide");
 };
 
 const toggleModalAdm = () => {
-    modalAdm.classList.toggle("hide");
-    fadeAdm.classList.toggle("hide");
-}
-
+  modalAdm.classList.toggle("hide");
+  fadeAdm.classList.toggle("hide");
+};
 
 const modalInfo = [closeModalBtn, fade];
-const modalInfoAdm = [closeModalBtnAdm, fadeAdm, openModalAdm]
+const modalInfoAdm = [closeModalBtnAdm, fadeAdm, openModalAdm];
 
-modalInfo.forEach((el) => {  
-    el.addEventListener("click", () => toggleModal());
+modalInfo.forEach((el) => {
+  el.addEventListener("click", () => toggleModal());
 });
 
 openModalBtn.forEach((el) => {
-    el.addEventListener("click", () => toggleModal());
+  el.addEventListener("click", () => toggleModal());
 });
 
 modalInfoAdm.forEach((el) => {
-    el.addEventListener("click", () => toggleModalAdm());
+  el.addEventListener("click", () => toggleModalAdm());
 });
-
