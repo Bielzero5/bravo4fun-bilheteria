@@ -22,17 +22,14 @@
                     <img src="../images/logo-dark-2.png" alt="logo da empresa">
                     <h2>Bravo<span class="danger">4Fun</span></h2>
                 </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
             </div>
 
             <div class="sidebar">
-                <a href="index.php" class="active">
+                <a href="index.php" >
                     <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
+                    <h3>Home</h3>
                 </a>
-                <a href="#">
+                <a href="#" class="active">
                     <span class="material-icons-sharp">add</span>
                     <h3>Adicionar Categorias</h3>
                 </a>
@@ -75,9 +72,10 @@
                                             <td >
                                                 <a href="excluirCat.php?id=<?php echo $value['CATEGORIA_ID']; ?>">Excluir</a>
                                             </td>
-                                            <td class="primary">
-                                                <input id="open-modal" type="button" value="Editar">
-                                            </td>                  
+                                            <td >
+                                                <a class="edit" href="editarCatForms.php?id=<?php echo $value['CATEGORIA_ID']; ?>">Editar</a>
+                                            </td>
+                                                            
                         <?php
                                 echo    '</tr>';
                                 };
@@ -114,12 +112,21 @@
                     </div>
                    
                     <form action="criarCategoria.php" method="POST">
-                        <label for="nome">Nome da Categoria:</label>
+                        <label class="labFont" for="nome">Nome da Categoria:</label>
                         <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Rock">
                         
-                        <label for="desc">Descrição</label>
-                        <textarea name="desc" id="desc-cat" cols="30" rows="5" wrap="hard">
-                        </textarea>
+                        <label class="labFont" for="desc">Descrição</label>
+                        <textarea name="desc" id="desc-cat" cols="30" rows="5" wrap="hard"></textarea>
+                        <div class="divStatus">
+                            <div>    
+                                <input class="status"type="radio" name="status" id="ativo" value="1" checked>
+                                <label  for="status">Ativo</label>
+                            </div>
+                            <div>
+                                <input class="status" type="radio" name="status" id="inativo" value="0">
+                                <label for="status">Inativo</label>
+                            </div>
+                        </div>
                         
                         <input type="submit" class="formUsu1" value="Enviar">
                     </form>

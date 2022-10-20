@@ -23,13 +23,10 @@
                     <img src="../images/logo-dark-2.png" alt="logo da empresa">
                     <h2>Bravo<span class="danger">4Fun</span></h2>
                 </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
             </div>
 
             <div class="sidebar">
-                <a href="#" class="active">
+                <a href="index.php">
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
@@ -51,19 +48,26 @@
             <div class="recent-orders">
                 <div  id="modalEditAdm" class="divUsu">
                     <div class="modalHeaderAdm">
-                        <h2>Cadastro de Administrador</h2>
+                        <h2>Cadastro de Categorias</h2>
                     </div>
                    
                     <form action="criarProcessamento.php" method="POST">
-                        <label for="nome">Nome:</label>
+                        <label class="labFont" for="nome">Nome da Categoria:</label>
                         <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
 
-                        <label for="email">Email</label>
-                        <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com">
+                        <label class="labFont" for="desc">Descrição</label>
+                        <textarea name="desc" id="descCat" cols="100" rows="10"></textarea>
 
-                        <label for="senha">Senha</label>
-                        <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123.">
-                
+                        <div class="divStatus">
+                            <div>    
+                                <input class="status"type="radio" name="status" id="ativo" value="1" checked>
+                                <label  for="status">Ativo</label>
+                            </div>
+                            <div>
+                                <input class="status" type="radio" name="status" id="inativo" value="0">
+                                <label for="status">Inativo</label>
+                            </div>
+                        </div>
                         <input type="submit" class="formUsu1" value="Enviar">
                     </form>
                 </div>

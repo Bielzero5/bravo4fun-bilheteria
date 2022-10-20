@@ -23,15 +23,12 @@
                     <img src="../images/logo-dark-2.png" alt="logo da empresa">
                     <h2>Bravo<span class="danger">4Fun</span></h2>
                 </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
             </div>
 
             <div class="sidebar">
-                <a href="#" class="active">
+                <a href="index.php">
                     <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
+                    <h3>Home</h3>
                 </a>
                 <a href="categorias.php">
                     <span class="material-icons-sharp">add</span>
@@ -55,47 +52,31 @@
                     </div>
                    
                     <form action="criarProcessamento.php" method="POST">
-                        <label for="nome">Nome:</label>
+                        <label class="labFont" for="nome">Nome:</label>
                         <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
 
-                        <label for="email">Email</label>
+                        <label class="labFont" for="email">Email</label>
                         <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com">
 
-                        <label for="senha">Senha</label>
+                        <label class="labFont" for="senha">Senha</label>
                         <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123.">
+
+                        <div class="divStatus">
+                            <div>    
+                                <input class="status"type="radio" name="status" id="ativo" value="1" checked>
+                                <label  for="status">Ativo</label>
+                            </div>
+                            <div>
+                                <input class="status" type="radio" name="status" id="inativo" value="0">
+                                <label for="status">Inativo</label>
+                            </div>
+                        </div>
                 
                         <input type="submit" class="formUsu1" value="Enviar">
                     </form>
                 </div>
         </main>
         <!------------------- END OF MAIN -------------------->
-        <div class="right">
-            <div class="top">
-                <button class="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey,<b>Daniel</b></p>
-                        <small class="text-mutet">Adim</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="../images/profile-1.jpg" alt="Foto de perfil">
-                    </div>
-                </div>
-            </div>
-            <!------------------- END OF TOP -------------------->
-            <div class="sales-analytics">
-                <h2>Cadastrar Adiministrador</h2>
-                <div class="item add-product">
-                    <div> 
-                        <input id="openModalAdm"  type="button" value="Adicionar">
-                        <span class="material-icons-sharp">add</span>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="scripts.js"></script>

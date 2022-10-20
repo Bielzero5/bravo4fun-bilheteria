@@ -40,15 +40,12 @@
                     <img src="../images/logo-dark-2.png" alt="logo da empresa">
                     <h2>Bravo<span class="danger">4Fun</span></h2>
                 </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
             </div>
 
             <div class="sidebar">
                 <a href="#" class="active">
                     <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
+                    <h3>Home</h3>
                 </a>
                 <a href="categorias.php">
                     <span class="material-icons-sharp">add</span>
@@ -66,7 +63,7 @@
 
             <!------------------- END OF INSIGHTS -------------------->
             <div class="recent-orders">
-                <h2>Administradores Adicionados</h2>
+                <h1>Administradores Adicionados</h1>
                 <table>
                     <thead>
                         <tr>
@@ -93,7 +90,7 @@
                                                 <a href="excluirUsu.php?id=<?php echo $value['ADM_ID']; ?>">Excluir</a>
                                             </td>
                                             <td >
-                                                <a href="editarUsuForms.php?id=<?php echo $value['ADM_ID']; ?>">Editar</a>
+                                                <a class="edit" href="editarUsuForms.php?id=<?php echo $value['ADM_ID']; ?>">Editar</a>
                                             </td>                  
                         <?php
                                 echo    '</tr>';
@@ -123,15 +120,26 @@
                     </div>
                    
                     <form action="criarProcessamento.php" method="POST">
-                        <label for="nome">Nome:</label>
+                        <label class="labFont" for="nome">Nome:</label>
                         <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
 
-                        <label for="email">Email</label>
+                        <label class="labFont" for="email">Email</label>
                         <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com">
 
-                        <label for="senha">Senha</label>
+                        <label class="labFont" for="senha">Senha</label>
                         <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123.">
-                
+                        
+                        <div class="divStatus">
+                            <div>    
+                                <input class="status"type="radio" name="status" id="ativo" value="1" checked>
+                                <label  for="status">Ativo</label>
+                            </div>
+                            <div>
+                                <input class="status" type="radio" name="status" id="inativo" value="0">
+                                <label for="status">Inativo</label>
+                            </div>
+                        </div>
+
                         <input type="submit" class="formUsu1" value="Enviar">
                     </form>
                 </div>
@@ -157,39 +165,7 @@
                 </div>
             </div>
             <!------------------- END OF TOP -------------------->
-            <div class="recent-updates">
-                <h2>Recent Updates</h2>
-                <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../images/profile-2.jpg" alt="Foto de perfil">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../images/profile-3.jpg" alt="Foto de perfil">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../images/profile-4.jpg" alt="Foto de perfil">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> received his order o Night Lion tech GPS drone</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!------------------- END OF UPDATES -------------------->
+            
             <div class="sales-analytics">
                 <h2>Cadastrar Adiministrador</h2>
                 <div class="item add-product">
