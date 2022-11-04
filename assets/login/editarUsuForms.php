@@ -14,7 +14,9 @@
     //dados para conexão ao mysql
     require 'conexao.php'; 
 
+
     $id = $_GET["id"];
+    
 ?>
     <div class="container">
         <aside>
@@ -51,15 +53,19 @@
                         <h2>Cadastro de Administrador</h2>
                     </div>
                    
-                    <form action="criarProcessamento.php" method="POST">
+                    <form action="editarUsu.php" method="POST">
+
+                        <label class="labFont" for="idUsu">ID:</label>
+                        <input type="text" name="idUsu" id="idUsu01" class="formUsu" value="<?php echo $id ?>" disabled>
+                        <input type="hidden" name="idUsu" id="idUsu" class="formUsu" value="<?php echo $id ?>">
                         <label class="labFont" for="nome">Nome:</label>
-                        <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
+                        <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas" required>
 
                         <label class="labFont" for="email">Email</label>
-                        <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com">
+                        <input class="formUsu" type="email" id="emailAdm" name="email" placeholder="joazinho@gmail.com" required>
 
                         <label class="labFont" for="senha">Senha</label>
-                        <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123.">
+                        <input class="formUsu" type="password" id="senhaAdm" name="senha" placeholder="Senha123." required>
 
                         <div class="divStatus">
                             <div>    

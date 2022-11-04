@@ -1,22 +1,24 @@
 <?php
         require 'conexao.php';
-
+        
         $email = $_POST["email"];
         $nome = $_POST["nome"];
         $senha = $_POST["senha"];
-
-        $id = $_GET["id"];
+        $status = $_POST["status"];
+        $id = $_POST["idUsu"];
+        echo var_dump($id);
 
         if (isset($id)) {
-            echo $id;
-            /* $cmdtext = ("UPDATE ADMINISTRADOR 
-            SET ADM_NOME='$nome', ADM_EMAIL='$email', ADM_SENHA='$senha' 
+            $cmdtext = ("UPDATE ADMINISTRADOR 
+            SET ADM_EMAIL='$email', ADM_NOME='$nome', ADM_SENHA='$senha', ADM_ATIVO='$status' 
             WHERE ADM_ID=$id");
 
             $cmd = $pdo->prepare($cmdtext);
             $cmd->execute();
 
-            echo '<a href="index.php">Voltar</a>'; */
+            echo '
+            <p>Deu certo chefe</p>
+            <a href="index.php">Voltar</a>'; 
 
         }else {
             echo 'Falha';

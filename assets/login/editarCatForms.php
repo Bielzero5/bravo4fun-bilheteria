@@ -56,7 +56,7 @@
                         <input class="formUsu" type="text" id="nomeAdm" name="nome" placeholder="Epaminondas">
 
                         <label class="labFont" for="desc">Descrição</label>
-                        <textarea name="desc" id="descCat" cols="100" rows="10"></textarea>
+                        <textarea name="desc" id="descCat" cols="130" rows="10"></textarea>
 
                         <div class="divStatus">
                             <div>    
